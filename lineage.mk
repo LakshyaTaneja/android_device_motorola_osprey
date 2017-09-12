@@ -12,8 +12,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# Inherit from osprey device
 
-$(call inherit-product, device/motorola/osprey/full_osprey.mk)
+$(call inherit-product, device/motorola/osprey/device.mk)
+
+# Device identifier. This must come after all inclusions
+$(call inherit-product-if-exists, vendor/motorola/osprey/osprey-vendor.mk)
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 720
@@ -21,8 +25,12 @@ TARGET_SCREEN_HEIGHT := 1280
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := osprey
-PRODUCT_NAME := lineage_osprey
+PRODUCT_NAME := carbon_osprey
 PRODUCT_MODEL := MotoG3
 PRODUCT_BRAND := Motorola
 PRODUCT_MANUFACTURER := Motorola
 PRODUCT_RELEASE_NAME := osprey
+
+# Maintainer
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.carbon.maintainer="Lakku"
